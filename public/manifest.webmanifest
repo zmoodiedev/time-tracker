@@ -1,0 +1,21 @@
+{
+  "name": "Time Tracker",
+  "short_name": "Time Tracker",
+  "description": "An ADHD-friendly time tracker for work. One tap to start, one tap to switch.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#13111c",
+  "theme_color": "#13111c",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Stop timer", "short_name": "Stop", "url": "./?stop=now", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] },
+    { "name": "Today's log", "short_name": "Today", "url": "./?view=day", "icons": [{ "src": "icon-192.png", "sizes": "192x192" }] }
+  ]
+}

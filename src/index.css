@@ -1,0 +1,115 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "@fontsource-variable/lexend";
+
+@custom-variant dark (&:is(.dark *));
+
+/* Same calm, high-contrast theme as Daily Planner. Lexend is designed to reduce visual stress. */
+:root {
+  --radius: 0.9rem;
+  --background: #13111c;
+  --foreground: #ece9f6;
+  --card: #1c1a29;
+  --card-foreground: #ece9f6;
+  --popover: #201d30;
+  --popover-foreground: #ece9f6;
+  --primary: #9b8cff;
+  --primary-foreground: #14102a;
+  --secondary: #2a2740;
+  --secondary-foreground: #ece9f6;
+  --muted: #252236;
+  --muted-foreground: #9a96b0;
+  --accent: #2c2944;
+  --accent-foreground: #ece9f6;
+  --destructive: #f87171;
+  --border: #2e2b43;
+  --input: #34304c;
+  --ring: #9b8cff;
+
+  --energy-low: #2dd4bf;
+  --energy-medium: #fbbf24;
+  --energy-high: #fb7185;
+  --win: #4ade80;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Lexend Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-energy-low: var(--energy-low);
+  --color-energy-medium: var(--energy-medium);
+  --color-energy-high: var(--energy-high);
+  --color-win: var(--win);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-sans);
+    user-select: none;
+    overscroll-behavior: none;
+    touch-action: manipulation;
+  }
+  input,
+  textarea {
+    user-select: text;
+  }
+  /* Native date/time pickers: make the icon visible on the dark theme. */
+  input::-webkit-calendar-picker-indicator {
+    filter: invert(0.8);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Room for the Android gesture bar / notches. */
+.pt-safe {
+  padding-top: max(env(safe-area-inset-top), 0.75rem);
+}
+.pb-safe {
+  padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
+}
+
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.8); }
+}
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
